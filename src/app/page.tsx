@@ -1,65 +1,77 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const moods = [
+  "soft motion",
+  "tiny delight",
+  "warm light",
+  "clean output",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-svh bg-[#091822] text-white">
+      <section
+        className="relative flex min-h-svh overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/cute-bg.png')" }}
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,24,34,0.70)_0%,rgba(9,24,34,0.40)_42%,rgba(9,24,34,0.06)_100%)]" />
+
+        <div className="relative z-10 flex min-h-svh w-full flex-col px-6 py-5 sm:px-10 lg:px-16">
+          <header className="flex items-center justify-between gap-6">
+            <Link
+              href="/"
+              className="font-mono text-sm font-semibold tracking-normal text-white/90"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+              cute.qawave.ai
+            </Link>
+            <span className="text-sm font-medium text-white/70">QA Wave</span>
+          </header>
+
+          <div className="flex flex-1 items-center">
+            <div className="max-w-3xl py-16">
+              <p className="mb-5 font-mono text-sm font-semibold uppercase tracking-normal text-[#ffd166]">
+                Small web experiments
+              </p>
+              <h1 className="max-w-2xl text-5xl font-black leading-none tracking-normal text-white sm:text-6xl lg:text-7xl">
+                Cute things, shipped clean.
+              </h1>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-white/82 sm:text-xl">
+                A tiny place for playful prototypes, polished previews, and
+                soft little ideas that need their own URL.
+              </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#mood"
+                  className="inline-flex min-h-12 items-center justify-center rounded-md bg-white px-6 text-base font-bold text-[#091822] transition hover:bg-[#ffd166] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#091822]"
+                >
+                  Open mood
+                </a>
+                <a
+                  href="https://qawave.ai"
+                  className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/55 px-6 text-base font-bold text-white transition hover:border-white hover:bg-white/12 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#091822]"
+                >
+                  qawave.ai
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <section
+            id="mood"
+            aria-label="Mood"
+            className="mb-4 grid gap-2 border-t border-white/25 pt-4 sm:grid-cols-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {moods.map((mood) => (
+              <div
+                key={mood}
+                className="min-h-14 rounded-md border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white/88 backdrop-blur-sm"
+              >
+                {mood}
+              </div>
+            ))}
+          </section>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
